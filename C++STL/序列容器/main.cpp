@@ -58,7 +58,16 @@ namespace Sequence{
 
         a.insert(a.begin(), {1, 2, 3, 4, }), out();
         a.erase(std::find(a.begin(), a.end(), 3), a.end()), out();
+    }
 
+    void testString(){
+        std::string s(20, '*');
+        //«á­±°l¥[
+        s.append("+++++");
+        s.append(1, 'F');
+        std::cout << s << '\n';
+
+        std::cout << s.substr(1, 4) << '\n';
     }
 
 
@@ -67,6 +76,7 @@ namespace Sequence{
 int main()
 {
     //Sequence::testArray();
-    Sequence::testVector();
+    //Sequence::testVector();
+    Sequence::testString();
     return 0;
 }
