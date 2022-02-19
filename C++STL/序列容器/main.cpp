@@ -105,12 +105,54 @@ namespace Deque{
     }
 }
 
+namespace Bitwise{
+    void testVectorBool(){
+        std::cout << sizeof(bool) << '\n';
+
+        std::vector<bool> vb{1, 1, 1, 0, 0, 1, 1, true};
+        //°µ¤Ï
+        vb.flip();
+        for(bool b : vb) std::cout << b;
+    }
+
+    void testBitset(){
+        std::bitset<64> bs("01101110110101");
+        std::bitset<64> bs2(114514296414);
+
+        auto out = [&](std::bitset<64>& bs){
+            std::cout << bs.to_string() << '\n';
+        };
+
+        out(bs), out(bs2);
+
+        std::cout << bs2.count() << ' ' << __builtin_popcountll(bs2.to_ullong()) << '\n';
+        bs.flip(1), out(bs);
+        bs.flip(), out(bs);
+
+        bs.reset(), out(bs);
+        bs.set(5), out(bs);
+        bs.set(), out(bs);
+
+        std::cout << "bs[3] = "<< bs[3] << '\n';
+        bs &= bs2, out(bs);
+        bs ^= bs2, out(bs);
+        bs |= bs2, out(bs);
+
+        bs = ~bs, out(bs);
+        bs <<= 1, bs >>= 3, out(bs);
+    }
+}
+
 int main()
 {
     //Sequence::testArray();
     //Sequence::testVector();
     //Sequence::testString();
 
-    Deque::testPriorityQueue();
+    // Deque::testPriorityQueue();
+
+    //Bitwise::testVectorBool();
+
+    Bitwise::testBitset();
     return 0;
 }
