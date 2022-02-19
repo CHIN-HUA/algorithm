@@ -70,13 +70,47 @@ namespace Sequence{
         std::cout << s.substr(1, 4) << '\n';
     }
 
+}
 
+namespace Deque{
+    void testDeque(){
+        std::deque<int> dq;
+        dq.push_front(1);
+        dq.pop_front();
+    }
+
+    void testQueue(){
+        //* [1, 2, 3, 4]
+        std::queue<int> Q;
+        std::queue<int>().swap(Q);
+    }
+
+    void testStack(){
+        std::stack<int>S;
+    }
+
+    struct node{
+        int a, b, c;
+    };
+
+    struct cmp{
+        bool operator() (const node &a, const node &b){
+            return a.c > b.c;
+        }
+    };
+
+    void testPriorityQueue(){
+        std::priority_queue<node, std::vector<node>, cmp> n;
+        n.push({1, 2, 3});
+    }
 }
 
 int main()
 {
     //Sequence::testArray();
     //Sequence::testVector();
-    Sequence::testString();
+    //Sequence::testString();
+
+    Deque::testPriorityQueue();
     return 0;
 }
